@@ -45,6 +45,9 @@ public class Persona {
     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference // evita la referencia circular a la hora de hacer el json
     private List<Social> social;
+     @OneToMany(mappedBy = "persona", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference // evita la referencia circular a la hora de hacer el json
+     private List<Proyectos> proyectos;
 
 
     

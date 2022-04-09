@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,7 +42,7 @@ public class ExperienciaController {
         
         return experienciaServ.verExperiencia();
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public ResponseEntity<Experiencia> agregarExperiencia(@RequestBody Experiencia experiencia)
     {
@@ -52,11 +53,13 @@ public class ExperienciaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newExperiencia);
         
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void borrarExperiencia (@PathVariable Long id)
     {
         experienciaServ.borrarExperiencia(id);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar")
     public ResponseEntity<Experiencia> editExperiencia
         (

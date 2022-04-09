@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class HabilidadesController {
     @Autowired
     private IHabilidadesServices habiServ;
     
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public ResponseEntity<Habilidades> agregarHabilidades(@RequestBody Habilidades habilidades)
     {
@@ -50,11 +51,13 @@ public class HabilidadesController {
         
         return habiServ.verHabilidades();
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void borrarHabilidades (@PathVariable Long id)
     {
         habiServ.borrarHabilidades(id);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar")
      public ResponseEntity<Habilidades> editHabilidades
         (
