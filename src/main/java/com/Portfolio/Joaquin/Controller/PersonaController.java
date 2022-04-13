@@ -40,6 +40,14 @@ public class PersonaController {
     //Persona
     @Autowired
     private IPersonaService persoServ;
+    @GetMapping("/ver/{id}")
+    @ResponseBody
+    public ResponseEntity<Persona> verPersonas(@PathVariable long id)
+    {
+        Persona p = this.persoServ.buscarPersona(id);
+        return ResponseEntity.ok(p);
+    }
+    
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/new")
     public ResponseEntity<Persona> agregarPersona(@RequestBody Persona pers)
@@ -49,13 +57,7 @@ public class PersonaController {
     }
     
     
-    @GetMapping("/ver/{id}")
-    @ResponseBody
-    public ResponseEntity<Persona> verPersonas(@PathVariable long id)
-    {
-        Persona p = this.persoServ.buscarPersona(id);
-        return ResponseEntity.ok(p);
-    }
+
     
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar")

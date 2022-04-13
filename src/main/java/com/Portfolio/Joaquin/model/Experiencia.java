@@ -4,7 +4,7 @@
  */
 package com.Portfolio.Joaquin.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,27 +27,10 @@ public class Experiencia {
     
     private String Empresa;
     private String Cargo;
-    private Date Inicio;
-    private Date Final;
+    private LocalDate Inicio;
+    private LocalDate Final;
         @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "persona_id")
 	@JsonBackReference // evita la referencia circular a la hora de hacer el json
 	private Persona persona;
-    
-    public Experiencia(    
-    Long id,
-    
-    String Empresa,
-    String Cargo,
-    Date Inicio,
-    Date Final
-    )
-    {
-        this.id= id;
-        
-        this.Empresa = Empresa;
-        this.Cargo = Cargo;
-        this.Inicio = Inicio;
-        this.Final = Final;
-    }
 }

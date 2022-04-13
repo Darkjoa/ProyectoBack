@@ -35,6 +35,13 @@ public class EstudiosController {
 	
    @Autowired
     private IEstudiosService estudiosServ;
+    @GetMapping("/ver")
+    @ResponseBody
+    public List<Estudios> verEstudios()
+    {
+        
+        return estudiosServ.verEstudios();
+    }
     @PreAuthorize("hasRole('ADMIN')") 
     @PostMapping("/new")
     public ResponseEntity<Estudios> agregarEstudios(@RequestBody Estudios estudios)
@@ -46,13 +53,7 @@ public class EstudiosController {
                 return ResponseEntity.status(HttpStatus.CREATED).body(newEstudios);   
     }
     
-    @GetMapping("/ver")
-    @ResponseBody
-    public List<Estudios> verEstudios()
-    {
-        
-        return estudiosServ.verEstudios();
-    }
+
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void borrarEstudios (@PathVariable Long id)
@@ -81,7 +82,6 @@ public class EstudiosController {
             e.setFinal(estudios.getFinal());
             Estudios newEstudios = this.estudiosServ.crearEstudios(e);
             return ResponseEntity.status(HttpStatus.OK).body(newEstudios);
-            
         }
         
         

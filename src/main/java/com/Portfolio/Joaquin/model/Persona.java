@@ -20,6 +20,7 @@ import lombok.Setter;
 
 @Entity
 @Data
+@Getter @Setter
 public class Persona {
     public Persona(){}
     @Id
