@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/sobremi")
-@CrossOrigin(origins = "https://joaquincornelatti-f320d.web.app")
+@CrossOrigin(origins = "*")
 public class SobreMiController {
     private final long PERSONA_ID=1;
     @Autowired

@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/experiencia")
-@CrossOrigin(origins = "https://joaquincornelatti-f320d.web.app")
+@CrossOrigin(origins = "*")
 public class ExperienciaController {
            //Experiencia
     private final long PERSONA_ID=1; //fk hardcodeada

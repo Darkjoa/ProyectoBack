@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/persona")
-@CrossOrigin(origins = "https://joaquincornelatti-f320d.web.app")
+@CrossOrigin(origins = "*")
 
 
 public class PersonaController {
