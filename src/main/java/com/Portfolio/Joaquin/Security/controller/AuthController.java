@@ -32,7 +32,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
+@CrossOrigin(origins = "https://joaquincornelatti-f320d.web.app")
 public class AuthController {
    @Autowired
     PasswordEncoder passwordEncoder;
